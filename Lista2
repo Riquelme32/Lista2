@@ -1,0 +1,117 @@
+package lista2;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author AME RIQUELME
+ */
+public class Lista2 {
+
+    
+    public static void main(String[] args) 
+    {
+        List <String> Lista = new ArrayList<String>();
+        Scanner leer = new Scanner (System.in);
+        int opc1,opc2;
+        
+          do
+          { //OPCIONES DEL MENU
+          
+              opc2 =1; //PARA LEER LA ULTIMA OPCION
+              
+                 System.out.println("1. INSERTAR UN ELEMENTO PARA LA LISTA");
+                 System.out.println("2. ACTUALIZA LA LISTA");
+                 System.out.println("3. BORRAR UN ELEMENTO");
+                 System.out.println("4. MOSTRAR LA LISTA");
+                 System.out.println("5. SALIR");
+          
+              opc1 = leer.nextInt();
+              String Elemento;
+           switch (opc1) //CASOS QUE VAN A MANDAR A LLAMAR A LOS METODOS
+           {
+           
+               case 1:
+                 
+                   System.out.println("\nINSERTE UN ELEMENTO"); //capturar los datos
+                   Elemento=leer.next();
+                   Lista.add(Elemento);
+                   break;
+                   
+               case 2:
+                   
+                  int i;
+                  if (!Lista.isEmpty())
+                  { //si la lista no esta vacia
+                      System.out.println("INSERTE EL INDICE DEL ELEMENTO");
+                      i  = leer.nextInt ();
+                      
+                      if (i<1||i>Lista.size())
+                      {  //tamaño de la lista
+                      System.out.println("EL ELEMENTO NO EXISTE");
+                      }else 
+                      { 
+                      System.out.println("INSERTE EL NUEVO ELEMENTO");
+                      Elemento = leer.next();
+                      Lista.set(i-1, Elemento);
+                      }
+                     
+                   } else
+                     {
+                      System.out.println("LA LISTA ESTA VACIA");
+                     }
+                  
+                  break;
+                  
+               case 3:
+                    
+                   if (!Lista.isEmpty())
+                  { //si la lista no esta vacia
+                     System.out.println("INSERTE EL INDICE DEL ELEMENTO");
+                     i = leer.nextInt();
+                     if(i < 1||i>Lista.size())
+                     {
+                     System.out.println("EL INDICE NO EXISTE");
+                     }else
+                     {
+                     Lista.remove((i-1)); //eliminar un elemento de la lista
+                     }
+                  } else
+                   {
+                     System.out.println("LA LISTA ESTA VACIA");
+                   }
+               
+                   break;
+                   
+               case 4:
+                   
+                 Mostrar (Lista);
+                 break;
+                   
+               case 5:
+                   
+                   System.out.println("SALIR");
+                   break;
+                   
+                   default:
+                  
+            }if (opc1!=5) 
+           {
+                  System.out.println("Desea continuar (0) SI - (1) NO");
+                  opc2 = leer.nextInt();  
+           }
+            
+        }  while (opc2 !=1); 
+    }
+            public static void Mostrar(List Ele)
+             {
+                  for (int i = 0; i< Ele.size(); i++)
+                  {
+                    System.out.println ("["+ (i+1)+"]"+Ele.get(i));
+
+                  } System.out.println("");
+            
+             }   
+ }
